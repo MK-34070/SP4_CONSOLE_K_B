@@ -109,7 +109,41 @@ public class Grille {
                 }
             }
         }
+        
+        
+        // verifier s'il y a 4 poins sur une diagonale montante
+        
+        //l'indice de la ligne du jeton A ne peut dépasser 2
+        for (int line=0;line<2; line ++){
+            //l'indice de la colonne du jeton A ne peut dépasser 3
+            for (int column=0; column<3 ; column++) {
+                if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line+1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
+                    System.out.println("4 pions sont alignés sur la diagonale montante");
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+    
+        // verifier s'il y a 4 pions sur une diagonale descendante
+        for (int line=0; line <3; line ++) {
+            //même principe mais dans l'autre direction
+            for (int column=0; column<3 ; column++) {
+                if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line-1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
+                    System.out.println("4 pions sont alignés sur la diagonale descendante");
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            
+            }
+        }
+        
     }
+    
     
     public void  tasserGrille(int line, int column){
     // fais descendre de 1 ligne la colonne lorsque celle ci est impacté par l'activation d'un desintegrateur ou trou noir
