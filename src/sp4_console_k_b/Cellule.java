@@ -1,0 +1,160 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package sp4_console_k_b;
+
+/**
+ *
+ * @author mario
+ */
+public class Cellule {
+    Jeton jetonCourant; //référence vers le jeton occupant la cellule, ou null
+    boolean trouNoir; //indique ou non la présence d’un trou noir
+    boolean desintegrateur; //indique ou non la présence d’un désintégrateur
+
+     
+    // Constructeur : initialisant les attributs avec des valeurs par défaut
+    public Cellule() {
+        jetonCourant = null ; // case vide donc pas de jeton dans la case
+        trouNoir = false;
+        desintegrateur = false;
+    }
+    
+    //ajoute le jeton en paramètre à la cellule, et retourne vrai si
+    //l’ajout s’est bien passé, sinon faux
+    public boolean affecterJeton(Jeton unjeton) {
+        jetonCourant = unjeton;
+        if (jetonCourant == null) {
+            jetonCourant = unjeton;
+            return true; //jeton bien affecté à la cellule du jetonCourant
+            }
+        else {
+            return false; //jetonCourant déjà présent sur la cellule
+            }
+        }
+
+    //renvoie une référence vers le jeton de la cellule
+    public Jeton recupererJeton(){
+        Jeton jetonRetour = jetonCourant; // on détermine quel jeton on veut récupérer
+        jetonCourant = null; // on réintialise la vide, maintenant vide puisque jeton récupéré
+        return jetonRetour ; // on renvoie le jeton récupéré
+}
+
+    String lireCouleurDuJeton() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    }
+    
+    
+    //supprime le jeton et renvoie vrai si la suppression s’est bien
+    //passée, ou faux autrement (ex : pas de jeton présent)
+    public boolean supprimerJeton() {
+        if ( jetonCourant== null) {
+            System.out.println("la case est vide");
+            
+            return false; 
+        }
+        else {
+            jetonCourant = null ; //on supprime le jetonCourant placé dans la cellule
+            return true; //la suppression s'est bien passée
+        }
+    }
+
+    public boolean placerTrouNoir(){
+    // renvoie true et ajoute un trou noir si il n'a a pas déjà de trou noir présent, false sinon
+ 
+       if (trouNoir = false){
+       trouNoir = true ;
+       System.out.println("Ajout de Trou Noir effectué");
+        return true;
+    }
+    else {
+      System.out.println("Trou Noir déja présent"); 
+      return false;
+    }
+}
+
+public boolean placerDesintegrateur(){
+    //Renvoie true et place in desintegrateur si il n'y en a pas déjà un, false et ne fait rien dans le cas contraire
+ 
+    if (desintegrateur = false){ // si il n'y a pas de desintegrateur
+        desintegrateur = true ; //on change sa valeur
+        System.out.println("Ajout de Désintégrateur effectué");
+       return true; //retour désignant que l'ajout a été fait
+    }
+    else {
+      System.out.println("Désintégrateur déjà présent"); 
+      return false; //sinon, on ne fait rien et on renvoie false
+    }
+}
+
+public boolean presenceTrouNoir(){
+    // indique si un trou noir est présent ou pas (renvoie true si oui, false sinon)
+ 
+    if (trouNoir == true){
+        System.out.println("Trou Noir présent");
+        return true;
+    }
+    else {
+        System.out.println("Trou Noir absent");
+        return false;
+    }
+}
+
+
+public boolean presenceDesintegrateur(){
+    // indique si un desintegrateur est présent ou pas(renvoie true si oui, false sinon)
+ 
+    if (desintegrateur == true){
+        System.out.println("Désintégrateur présent");
+        return true;
+    }
+    else {
+        System.out.println("Désintégrateur absent");
+        return false;
+    }
+}
+
+public String lireCouleurDuJeton(){
+    //si la cellule ne contient pas de jeton, renvoie qu'elle est vide, sinon renvoie la couleur du jeton l'occupant
+ 
+    if (jetonCourant == null){
+        return "Cellule vide";
+    }
+    else{
+        return jetonCourant.Couleur;
+    }
+}
+
+
+public boolean recupererDesintegrateur(){
+    // si il y a un desintegrateur, le supprime et renvoie true, sinon renvoie false et ne fait rien
+ 
+    if(desintegrateur =! false){
+        desintegrateur = false;
+        System.out.println("Suppression du Désintegrateur effectuée");
+        return true;  
+    }
+    else{
+         System.out.println("Pas de Désintégrateur présent");
+         return false;   
+    } 
+}
+
+public boolean activerTrouNoir(){
+    // si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
+ 
+    if(trouNoir = true){
+        jetonCourant=null; // vide la cellule
+        trouNoir = false; // disparition du Trou Noir
+        System.out.println("Activation Trou Noir effectuée");
+        return true;  
+    }
+    else{
+        System.out.println("Pas de Trou Noir présent");
+        return false;
+    }
+    
+}
+}
