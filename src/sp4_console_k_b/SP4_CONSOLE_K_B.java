@@ -15,6 +15,11 @@ public class SP4_CONSOLE_K_B {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //EFFECTUER DES TESTS
+        Jeton testjeton = new Jeton("Jaune");
+        System.out.println(testjeton.lireCouleur());
+        
     }
     
 }
