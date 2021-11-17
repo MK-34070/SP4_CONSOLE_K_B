@@ -1,17 +1,24 @@
+package sp4_console_k_b;
+package Joueur.java;
+package Jeton.java;
+package Grille.java;
+package Cellule.java;
+import java.util.Random;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sp4_console_k_b;
-
-import java.util.Random;
-import java.util.Scanner;
 
 /**
  *
- * @author mario
+ * @author leaburriat
  */
+
+import java.util.Scanner;
+
 public class Partie {
+    
     //création ListeJoueurs : tableau des deux joueurs de la partie
     Joueur [] ListeJoueurs = new Joueur[2];
     
@@ -115,12 +122,12 @@ public class Partie {
         }
         if (grilleJeu.colonneRemplie(ChoixCol)==true) {
             //La colonne est déjà remplie
-            ChoixCol = sc.nextInt() - 1;
+            ChoixCol = sc.nextInt() - 1; //on demande au joueur d'en choisir 
             System.out.println("Erreur : Colonne déjà remplie - Choisissez une autre colonne");
         }
         else { //REVOIR ICI :
-            Jeton JetonCourant = joueurCourant.enleverJeton(); //on retire le jeton courant au joueur (-1)
-            grilleJeu.ajouterJetonDansColonne(JetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
+            Jeton jetonCourant = joueurCourant.enleverJeton(); //on retire le jeton courant au joueur
+            grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
             System.out.println("Le jeton a bien été placé dans la colonne : "+ChoixCol);
         }
     }
@@ -129,7 +136,7 @@ public class Partie {
     public void debuterPartie() {
         initialiserPartie(); //création du plateau
         
-        //Boucle d'une partie
+        //Boucle d'une partie (à chaque tour un joueur joue, puis l’autre, et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie)
         for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
             //dans la version 1 --> 1 seule option : jouer un jeton
             jouerJeton();
@@ -150,9 +157,5 @@ public class Partie {
         }
     }
 }
-
-
-//une partie n’est finalement qu’une grande boucle : à chaque tour un joueur joue, puis l’autre,
-//et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie.
 
 
