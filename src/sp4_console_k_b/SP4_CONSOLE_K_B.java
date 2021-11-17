@@ -38,6 +38,12 @@ public class SP4_CONSOLE_K_B {
         c.supprimerJeton(); //OK
         c.enleverJeton();//OK
         
+        //TEST PARTIE.JAVA
+        
+        
+        
+        //TEST GRILLE.JAVA
+        
     }
     
 }
