@@ -91,7 +91,24 @@ public class Grille {
         return couleur;
     }
     
-    
+    public boolean etreGagnantePourJoueur(Joueur player){
+        //verifier si il y a 4 pions au minimum sur une ligne
+        String Colorplayer=player.Couleur;
+        int jetonwin=0;
+        int cellules=42;
+        while(jetonwin!=0 && )
+        for (int line=0;line<6; line ++){
+            for (int column=0; column<4 ; column++){
+                if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
+                    jetonwin+=1;
+                    cellules-=
+                }
+                else{
+                    jetonwin=0;
+                }
+            }
+        }
+    }
     
     public void  tasserGrille(int line, int column){
     // fais descendre de 1 ligne la colonne lorsque celle ci est impacté par l'activation d'un desintegrateur ou trou noir
