@@ -26,8 +26,7 @@ public class Grille {
                 return true;
             } 
         }
-     return false;
-     //la colonne est remplie
+     return false; //la colonne est remplie
     }
     
     public boolean etreremplie(){
@@ -55,13 +54,16 @@ public class Grille {
     
     public void  afficherGrilleSurConsole() {
     // affiche la grille dans la console
-
         for (int line=5; line>=0; line--){ // boucle décrémentée car l'affichage conventionnel et celui pris par les tableaux est inversé
             for (int column=0; column<7; column++){
                 if (CellulesJeu[line][column].trouNoir == true){
                     System.out.print("T"); // T sur la cellule pour signifier la présence d'un trou Noir
                 }
-                else if ("Rouge".equals(CellulesJeu[line][column].lireCouleurDuJeton())){
+                
+                else if ((CellulesJeu[line][column]).lireCouleurDuJeton(line column))==null){
+                //A FINIR DE COMPLETER
+                }
+                else if ("Rouge".equals(CellulesJeu[line][column])){  //.lireCouleurDuJeton()
                         System.out.print("R");
                      }
                 else{
@@ -70,7 +72,7 @@ public class Grille {
 
             }
             System.out.println(" " + (line+1)); // affichage des numéros de lignes (l+1) car tableau commence à 0
-        }// revoir l'aafichage des numéros de lignes et colonnes
+        }// revoir l'afichage des numéros de lignes et colonnes
         for (int column=0; column<7; column++){
             System.out.print((column+1)); // affichage des colonnes (c+1) car tableau commence à 0
         }
