@@ -37,7 +37,7 @@ public class Joueur {
         return false;
     // pourquoi avoir un boolean en sortie? que veut on savoir?
     //si la liste de jeton est pleine --> return true?
-    
+    }
     //incrémente le nombre de désintégrateurs du joueur
     public void obtenirDesintegrateur() {
         nombreDesintegrateurs += 1;
@@ -55,6 +55,10 @@ public class Joueur {
             System.out.println("Vous ne possédez plus de désintégrateur. ");
             return false;
         }
+    }
+
+    Jeton enleverJeton() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
