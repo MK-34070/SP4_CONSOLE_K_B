@@ -96,15 +96,16 @@ public class Grille {
         String Colorplayer=player.Couleur;
         int jetonwin=0;
         int cellules=42;
-        while(jetonwin!=0 && )
+        while(jetonwin!=0 && cellules!=0)
         for (int line=0;line<6; line ++){
             for (int column=0; column<4 ; column++){
                 if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
                     jetonwin+=1;
-                    cellules-=
+                    cellules-=1;
                 }
                 else{
                     jetonwin=0;
+                    cellules-=1;
                 }
             }
         }
