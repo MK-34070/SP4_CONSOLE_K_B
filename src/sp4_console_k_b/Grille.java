@@ -96,52 +96,87 @@ public class Grille {
         String Colorplayer=player.Couleur;
         int jetonwin=0;
         int cellules=42;
-        while(jetonwin!=0 && cellules!=0)
-        for (int line=0;line<6; line ++){
-            for (int column=0; column<4 ; column++){
-                if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
-                    jetonwin+=1;
-                    cellules-=1;
-                }
-                else{
-                    jetonwin=0;
-                    cellules-=1;
+        int c=4;
+        int l=3;
+        while(cellules!=0)
+            for (int line=0;line<5; line ++){
+                for (int column=0; column<c ; column++){
+                    if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
+                            if (jetonwin>=4){
+                                System.out.println("Le joueur"  + player  + "a gagné");
+                                return true;
+                            }else{
+                                jetonwin+=1;
+                                cellules-=1;
+                                c+=1;
+                            }
+                    }
+                    else{
+                        if (jetonwin>=4){
+                            System.out.println("Le joueur"  + player  + "a gagné");
+                            return true;
+                        }else{
+                            jetonwin=0;
+                            cellules-=1;
+                            }
+                    }
+            }
+            for (int column=0;column<6; column ++){
+                for (  line=0; line<l ; line++){
+                    if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
+                        if (jetonwin>=4){
+                            System.out.println("Le joueur"  + player  + "a gagné");
+                            return true;
+                        }else{
+                            jetonwin+=1;
+                            cellules-=1;
+                            l+=1;
+                        }
+                    }
+                    else{
+                        if (jetonwin>=4){
+                            System.out.println("Le joueur"  + player  + "a gagné");
+                            return true;
+                        }else{
+                            jetonwin=0;
+                            cellules-=1;
+                            }
+                    }
                 }
             }
-        }
         
         
-        // verifier s'il y a 4 poins sur une diagonale montante
-        
-        //l'indice de la ligne du jeton A ne peut dépasser 2
-        for (int line=0;line<2; line ++){
-            //l'indice de la colonne du jeton A ne peut dépasser 3
-            for (int column=0; column<3 ; column++) {
-                if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line+1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
-                    System.out.println("4 pions sont alignés sur la diagonale montante");
-                    return true;
-                }
-                else {
-                    return false;
+            // verifier s'il y a 4 poins sur une diagonale montante
+
+            //l'indice de la ligne du jeton A ne peut dépasser 2
+            for (line=0;line<2; line ++){
+                //l'indice de la colonne du jeton A ne peut dépasser 3
+                for (int column=0; column<3 ; column++) {
+                    if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line+1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line+3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
+                        System.out.println("4 pions sont alignés sur la diagonale montante");
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                 }
             }
-        }
-    
-        // verifier s'il y a 4 pions sur une diagonale descendante
-        for (int line=0; line <3; line ++) {
-            //même principe mais dans l'autre direction
-            for (int column=0; column<3 ; column++) {
-                if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line-1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
-                    System.out.println("4 pions sont alignés sur la diagonale descendante");
-                    return true;
+
+            // verifier s'il y a 4 pions sur une diagonale descendante
+            for ( line=0; line <3; line ++) {
+                //même principe mais dans l'autre direction
+                for (int column=0; column<3 ; column++) {
+                    if ( (CellulesJeu[line][column].lireCouleurDuJeton() == Colorplayer) && (CellulesJeu[line-1][column+1].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-2][column+2].lireCouleurDuJeton() == Colorplayer) || (CellulesJeu[line-3][column+3].lireCouleurDuJeton() == Colorplayer) ) {
+                        System.out.println("4 pions sont alignés sur la diagonale descendante");
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+
                 }
-                else {
-                    return false;
-                }
-            
             }
-        }
-        
+        }return false;
     }
     
     
