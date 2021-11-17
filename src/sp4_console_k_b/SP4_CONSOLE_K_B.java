@@ -46,7 +46,7 @@ public class SP4_CONSOLE_K_B {
         //g.colonneRemplie(0);
         //g.etreGagnantePourJoueur(theplayer);
         //g.etreremplie();
-        //g.lireCouleurDuJeton(0, 0);
+        //g.lireCouleurDuJeton(0, 0); // cette méthode est OK
         
         //TEST PARTIE.JAVA
         
