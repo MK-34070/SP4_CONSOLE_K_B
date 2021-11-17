@@ -147,7 +147,6 @@ public class Grille {
         
         
             // verifier s'il y a 4 poins sur une diagonale montante
-
             //l'indice de la ligne du jeton A ne peut dépasser 2
             for (line=0;line<2; line ++){
                 //l'indice de la colonne du jeton A ne peut dépasser 3

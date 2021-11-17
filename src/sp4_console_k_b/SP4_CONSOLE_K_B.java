@@ -38,11 +38,18 @@ public class SP4_CONSOLE_K_B {
         c.supprimerJeton(); //OK
         c.enleverJeton();//OK
         
+        //TEST GRILLE.JAVA
+        Grille g = new Grille();
+        //g.afficherGrilleSurConsole();
+        //g.ajouterJetonDansColonne(testjeton, 0);
+        //g.celluleOccupee(0, 0);
+        //g.colonneRemplie(0);
+        //g.etreGagnantePourJoueur(theplayer);
+        //g.etreremplie();
+        //g.lireCouleurDuJeton(0, 0);
+        
         //TEST PARTIE.JAVA
         
-        
-        
-        //TEST GRILLE.JAVA
         
     }
     

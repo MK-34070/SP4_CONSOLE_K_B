@@ -12,7 +12,7 @@ public class Joueur {
     String Nom;
     String Couleur;
     Jeton ListeJetons[] = new Jeton[21]; //creation d'un tableau du type Jeton contenant 21 jetons
-    //int nombreDesintegrateurs;// nombre de désintégrateurs actuellement en possession
+    int nombreDesintegrateurs;// nombre de désintégrateurs actuellement en possession
     int nombreJetonsRestants = 21; //initialement 21 jetons, évolue au cours de la partie
     
 
@@ -20,7 +20,7 @@ public class Joueur {
     public Joueur(String name) {
         Nom = name;
         System.out.println("Voici le joueur N°1 :" + Nom);
-        //nombreDesintegrateurs = 0;
+        nombreDesintegrateurs = 0;
         nombreJetonsRestants = 0;
     }
 
@@ -30,24 +30,22 @@ public class Joueur {
         System.out.println("La couleur " + Couleur+" a été affecté à "+Nom);
     }
 
-// COMPLETER CETTE MÉTHODE //
     //ajoute le jeton passé en paramètre à la liste des jetons
     public boolean ajouterJeton(Jeton unjeton ) {
         ListeJetons[nombreJetonsRestants++] = unjeton;
         System.out.println("un jeton a été ajouté au joueur "+Nom);
         return false;
-    }//revoir cette méthode
     // pourquoi avoir un boolean en sortie? que veut on savoir?
     //si la liste de jeton est pleine --> return true?
     
     //incrémente le nombre de désintégrateurs du joueur
-    /*public void obtenirDesintegrateur() {
+    public void obtenirDesintegrateur() {
         nombreDesintegrateurs += 1;
-    }*/
+    }
 
     //décrémente le nombre de désintégrateurs et confirme l’utilisation de ce dernier,
     //ou renvoie faux s’il ne restait plus de désintégrateurs.
-    /*public boolean utiliserDesintegrateur() {
+    public boolean utiliserDesintegrateur() {
         //vérifie que le joueur possède au moins un désintégrateur
         if (nombreDesintegrateurs > 0) {
             nombreDesintegrateurs -= 1; //retire un désintégrateur
@@ -57,6 +55,6 @@ public class Joueur {
             System.out.println("Vous ne possédez plus de désintégrateur. ");
             return false;
         }
-    }*/
+    }
 
 }

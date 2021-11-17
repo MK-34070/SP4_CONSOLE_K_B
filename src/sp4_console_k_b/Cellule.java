@@ -10,15 +10,15 @@ package sp4_console_k_b;
  */
 public class Cellule {
     Jeton jetonCourant; //référence vers le jeton occupant la cellule, ou null
-    //boolean trouNoir; //indique ou non la présence d’un trou noir
-    //boolean desintegrateur; //indique ou non la présence d’un désintégrateur
+    boolean trouNoir; //indique ou non la présence d’un trou noir
+    boolean desintegrateur; //indique ou non la présence d’un désintégrateur
 
      
     // Constructeur : initialisant les attributs avec des valeurs par défaut
     public Cellule() {
         jetonCourant = null ; // case vide donc pas de jeton dans la case
-        //trouNoir = false;
-        //desintegrateur = false;
+        trouNoir = false;
+        desintegrateur = false;
     }
     
     //enleve le jeton courant de la variable jetoncourant
@@ -33,11 +33,11 @@ public class Cellule {
         jetonCourant = unjeton;
         if (jetonCourant == null) {
             jetonCourant = unjeton;
-            //System.out.println("affecterJeton OK1. ");
+            System.out.println("affecterJeton OK1. ");
             return true; //jeton bien affecté à la cellule du jetonCourant
             }
         else {
-            //System.out.println("affecterJeton OK2. ");
+            System.out.println("affecterJeton OK2. ");
             return false; //jetonCourant déjà présent sur la cellule
             }
         }
@@ -65,7 +65,7 @@ public class Cellule {
         }
     }
 
-    /*public boolean placerTrouNoir(){
+    public boolean placerTrouNoir(){
     // renvoie true et ajoute un trou noir si il n'a a pas déjà de trou noir présent, false sinon
  
        if (trouNoir = false){
@@ -77,9 +77,9 @@ public class Cellule {
       System.out.println("Trou Noir déja présent"); 
       return false;
     }
-    }*/
+    }
 
-/*public boolean placerDesintegrateur(){
+public boolean placerDesintegrateur(){
     //Renvoie true et place in desintegrateur si il n'y en a pas déjà un, false et ne fait rien dans le cas contraire
  
     if (desintegrateur = false){ // si il n'y a pas de desintegrateur
@@ -91,9 +91,9 @@ public class Cellule {
       System.out.println("Désintégrateur déjà présent"); 
       return false; //sinon, on ne fait rien et on renvoie false
     }
-}*/
+}
 
-/*public boolean presenceTrouNoir(){
+public boolean presenceTrouNoir(){
     // indique si un trou noir est présent ou pas (renvoie true si oui, false sinon)
  
     if (trouNoir == true){
@@ -104,10 +104,10 @@ public class Cellule {
         System.out.println("Trou Noir absent");
         return false;
     }
-}*/
+}
 
 
-/*public boolean presenceDesintegrateur(){
+public boolean presenceDesintegrateur(){
     // indique si un desintegrateur est présent ou pas(renvoie true si oui, false sinon)
  
     if (desintegrateur == true){
@@ -118,7 +118,7 @@ public class Cellule {
         System.out.println("Désintégrateur absent");
         return false;
     }
-}*/
+}
 
 public String lireCouleurDuJeton(){
     //si la cellule ne contient pas de jeton, renvoie qu'elle est vide, sinon renvoie la couleur du jeton l'occupant
@@ -133,7 +133,7 @@ public String lireCouleurDuJeton(){
 }
 
 
-/*public boolean recupererDesintegrateur(){
+public boolean recupererDesintegrateur(){
     // si il y a un desintegrateur, le supprime et renvoie true, sinon renvoie false et ne fait rien
  
     if(desintegrateur =! false){
@@ -145,9 +145,9 @@ public String lireCouleurDuJeton(){
          System.out.println("Pas de Désintégrateur présent");
          return false;   
     } 
-}*/
+}
 
-/*public boolean activerTrouNoir(){
+public boolean activerTrouNoir(){
     // si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
  
     if(trouNoir = true){
@@ -160,6 +160,6 @@ public String lireCouleurDuJeton(){
         System.out.println("Pas de Trou Noir présent");
         return false;
     }
-}*/
+}
     
 }
