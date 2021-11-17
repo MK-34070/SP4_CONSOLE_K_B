@@ -61,7 +61,7 @@ public class Grille {
                 if (CellulesJeu[line][column].trouNoir == true){
                     System.out.print("T"); // T sur la cellule pour signifier la présence d'un trou Noir
                 }
-                else if ((CellulesJeu[line][column].lireCouleurDuJeton())== "Rouge"){
+                else if ("Rouge".equals(CellulesJeu[line][column].lireCouleurDuJeton())){
                         System.out.print("R");
                      }
                 else{

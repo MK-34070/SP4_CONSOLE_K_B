@@ -16,9 +16,27 @@ public class SP4_CONSOLE_K_B {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        
         //EFFECTUER DES TESTS
+        
+        //TEST JETON.JAVA - Fonctionnel
         Jeton testjeton = new Jeton("Jaune");
         System.out.println(testjeton.lireCouleur());
+        
+        
+        //TEST JOUEUR.JAVA - Fonctionnel
+        Joueur theplayer = new Joueur("PLAYERname");
+        System.out.println();
+        theplayer.affecterCouleur("Rouge");
+        theplayer.ajouterJeton(testjeton);
+        
+        //TEST CELLULE.JAVA
+        Cellule c = new Cellule();
+        c.lireCouleurDuJeton(); //OK
+        c.affecterJeton(testjeton); //OK
+        c.recupererJeton(); //OK
+        c.supprimerJeton(); //OK
+        c.enleverJeton();//OK
         
     }
     

@@ -1,8 +1,4 @@
 package sp4_console_k_b;
-package Joueur.java;
-package Jeton.java;
-package Grille.java;
-package Cellule.java;
 import java.util.Random;
 
 /*
@@ -137,7 +133,7 @@ public class Partie {
         initialiserPartie(); //création du plateau
         
         //Boucle d'une partie (à chaque tour un joueur joue, puis l’autre, et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie)
-        for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
+        /*for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
             //dans la version 1 --> 1 seule option : jouer un jeton
             jouerJeton();
 
@@ -154,7 +150,7 @@ public class Partie {
                 JoueurSuivant(); //on passe au joueur suivant
             }
             i++;
-        }
+        }*/
     }
 }
 

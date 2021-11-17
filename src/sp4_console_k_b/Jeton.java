@@ -8,6 +8,8 @@ package sp4_console_k_b;
  *
  * @author mario
  */
+
+//TEST FONCTIONNEL
 public class Jeton {
     //couleur affectée au joueur --> "Jaune" ou "Rouge"
     String Couleur;
@@ -19,7 +21,7 @@ public class Jeton {
 
     //Méthode : renvoie la couleur du jeton
     public String lireCouleur() {
-        
         return Couleur;
     }
+    
 }
