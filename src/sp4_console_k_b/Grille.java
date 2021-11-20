@@ -19,6 +19,17 @@ public class Grille {
         }
     }
     
+    //mettre de la couleur sur grille
+    public class ConsoleColors {
+        public static final String RED = "\033[0;31m";   // RED
+        public static final String YELLOW = "\033[0;33m";  // YELLOW
+        public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
+        public static final String CYAN_BACKGROUND = "\033[46m";   // CYAN
+    }
+    
+    
+    //ajoute le jeton dans la colonne ciblée, sur
+    //la cellule vide la plus basse. Renvoie faux si la colonne était pleine.
     public boolean ajouterJetonDansColonne(Jeton unjeton, int column ){
         for (int line=0; line<6;line ++){
             if (CellulesJeu[line][column].jetonCourant==null){
@@ -29,58 +40,61 @@ public class Grille {
      return false; //la colonne est remplie
     }
     
+    
+    //renvoie vrai si la grille est pleine
     public boolean etreremplie(){
         for (int line=0;line<6;line++){
             for (int column=0;column<7;column ++){
                 if(CellulesJeu[line][column]==null){
+                    System.out.println("la grille n'est pas encore pleine");
                     return false ;
                 }
             }
         }
+        System.out.println("la grille est pleine");
         return true;
-        // le tableau sera bien remplie car toutes les cases on été parcourues
-        
+        // le tableau sera bien remplie car toutes les cases on été parcourues 
     }
+    
+    //vide la grille
     public void viderGrille(){
         for (int line=0;line<6;line++){
             for (int column=0;column<7;column ++){
                     CellulesJeu[line][column].jetonCourant=null;
                     CellulesJeu[line][column].trouNoir = false;
                     CellulesJeu[line][column].desintegrateur = false;
-                
             }
         }
+        System.out.println("Grille vidée");
     }
     
+    //fonction d’affichage de la grille sur la console. Doit
+    //faire apparaitre les couleurs, et les trous noirs.
     public void  afficherGrilleSurConsole() {
     // affiche la grille dans la console
-    System.out.println("| 1  | 2  | 3 |  4 |  5 |  6 |  7 |");
+    System.out.println(ConsoleColors.CYAN_BACKGROUND+"| 1  | 2  | 3 |  4 |  5 |  6 |  7 |");
     for (int line=5; line>=0; line--){ // boucle décrémentée car l'affichage conventionnel et celui pris par les tableaux est inversé
         for (int column=0; column<7; column++){
            
             if (CellulesJeu[line][column].jetonCourant == null){
-                System.out.print("| V |");
+                System.out.print(ConsoleColors.WHITE_BACKGROUND+"| V |");
             }
             else if ((CellulesJeu[line][column].jetonCourant.Couleur)!= "Rouge"){
-                    System.out.print(" J ");
+                    System.out.print(ConsoleColors.YELLOW+"| J |");
                  }
             else{
-                    System.out.print(" R ");
+                    System.out.print(ConsoleColors.RED+"| R |");
                 }
-                  
         }
-        System.out.println(" | " + (line+1) + " | "); // affichage des numéros de lignes (l+1) car tableau commence à 0
+        System.out.println(ConsoleColors.CYAN_BACKGROUND+" | " + (line+1) + " | "+ConsoleColors.CYAN_BACKGROUND); // affichage des numéros de lignes (l+1) car tableau commence à 0
     }
-    
-    System.out.println(); // affichage global du tableau
-
-    
-    
-         
+    System.out.println(); // affichage global du tableau 
 }
 
+    //renvoie vrai si la cellule de coordonnées données est occupée par un jeton.
     public boolean celluleOccupee(int line , int column){
         if (CellulesJeu[line][column].jetonCourant==null){
+            System.out.println("cellule vide");
             return false;
         }
         else{
@@ -88,11 +102,16 @@ public class Grille {
             return true;
         }
     }
+    
+    //renvoie la couleur du jeton de la cellule ciblée.
     public String lireCouleurDuJeton(int line , int column) {
         String couleur=CellulesJeu[line][column].lireCouleurDuJeton();
+        System.out.println("lecture couleur du jeton");
         return couleur;
     }
     
+    //renvoie vrai si la grille est gagnante pour le joueur passé en paramètre,
+    //c’est-à-dire que 4 pions de sa couleur sont alignés en ligne, en colonne ou en diagonale.
     public boolean etreGagnantePourJoueur(Joueur player){
         //verifier si il y a 4 pions au minimum sur une ligne
         String Colorplayer=player.Couleur;
@@ -180,36 +199,45 @@ public class Grille {
         }return false;
     }
     
-    
+    //lorsqu’un jeton est capturé ou détruit, tasse la grille en
+    //décalant de une ligne les jetons situés au dessus de la cellule libérée.
     public void  tasserGrille(int line, int column){
     // fais descendre de 1 ligne la colonne lorsque celle ci est impacté par l'activation d'un desintegrateur ou trou noir
- 
-    for (int i=line; i<6; i++){
-        if (i==5){
-            CellulesJeu[i][column].jetonCourant = null; // si on est sur la plus haute ligne du tableau, cela ne décale rien. On initialise juste la cellule
-        }
-        else{
-            CellulesJeu[i][column].jetonCourant = CellulesJeu[i+1][column].jetonCourant; // sinon on affecte à chaque ligne de la colonne fixée la valeur du jeton au-dessus de lui
-        }
+        for (int i=line; i<6; i++){
+            if (i==5){
+                CellulesJeu[i][column].jetonCourant = null; // si on est sur la plus haute ligne du tableau, cela ne décale rien. On initialise juste la cellule
+                System.out.println("Grille non tassée (plus haute ligne du tableau)");
+            }
+            else{
+                CellulesJeu[i][column].jetonCourant = CellulesJeu[i+1][column].jetonCourant; // sinon on affecte à chaque ligne de la colonne fixée la valeur du jeton au-dessus de lui
+                System.out.println("Grille tassée");
+            }
     }
 }
-    
-  public boolean  colonneRemplie(int column){
-    //Renvoie true si la colonne est remplie, false sinon
- 
-    for (int line=0; line <6; line++){
-        if (CellulesJeu[line][column].jetonCourant==null){ // si cellule vide alors colonne non remplie
-            return false ;
-        }
+    //renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
+    public boolean colonneRemplie(int column){
+        for (int line=0; line <6; line++){
+            if (CellulesJeu[line][column].jetonCourant==null){ // si cellule vide alors colonne non remplie
+                System.out.println("colonne pas encore remplie");
+                return false ;
+            }
+            else {
+                System.out.println("colonne remplie");
+                return true;
+            }
+          }
+        return false;
     }
-    return true ; // colonne remplie
-}  
     
+    //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé,
+    //ou faux sinon (exemple : désintégrateur déjà présent)
     public boolean  placerDesintegrateur(int line, int column){
     // si il y a déjà un desintegrateur de présent, renvoie false, true sinon
  
     if (CellulesJeu[line][column].desintegrateur == false){
         CellulesJeu[line][column].desintegrateur = true;
+        // Placer Désintégrateur sur la grille !!!
+                                                                                    // HERE //
         System.out.println("Désintégrateur placé");
         return true;
     }
@@ -222,7 +250,7 @@ public class Grille {
 //ligne, en colonne ou en diagonale.
 
     // ajoute un trou noir à l’endroit indiqué et retourne vrai 
-//si l’ajout s’est bien passé, ou faux sinon (exemple : trou noir déjà présent)
+    //si l’ajout s’est bien passé, ou faux sinon (exemple : trou noir déjà présent)
     public boolean placerTrouNoir(int line , int column){
         if (CellulesJeu[line][column].trouNoir==false){
             CellulesJeu[line][column].trouNoir = true;
@@ -230,12 +258,13 @@ public class Grille {
             return true;
         }
         System.out.println("trou Noir déjà présent");
-        return false;  
-        
+        return false;
     }
+    
+    // supprime le jeton de la cellule visée. Renvoie vrai si
+    //la suppression s’est bien déroulée, ou faux autrement (jeton absent)
     public boolean supprimerJeton(int line, int column){
     //Supprime le jeton si il y en a un dans la cellule
- 
         if (CellulesJeu[line][column].jetonCourant == null){
             System.out.println("Pas de Jeton");
             return false;
@@ -247,10 +276,12 @@ public class Grille {
         }
     }
 
-    public Jeton  recupererJeton(int line, int column){
+    //enlève le jeton de la cellule visée et renvoie une référence vers ce jeton.
+    public Jeton recupererJeton(int line, int column){
         //recupere le jeton de la coordonnée saisie
         Jeton JetonRecup = CellulesJeu[line][column].jetonCourant; 
         CellulesJeu[line][column].jetonCourant = null;
+        System.out.println("Jeton récupéré");
         return JetonRecup;
     }
 }

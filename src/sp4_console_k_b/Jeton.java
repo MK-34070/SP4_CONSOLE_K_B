@@ -19,6 +19,7 @@ public class Jeton {
         Couleur = Color ;
         }
 
+
     //Méthode : renvoie la couleur du jeton
     public String lireCouleur() {
         return Couleur;

@@ -19,7 +19,6 @@ public class Joueur {
     //constructeur initialisant le nom du joueur avec son paramètre
     public Joueur(String name) {
         Nom = name;
-        System.out.println("Voici le joueur N°1 :" + Nom);
         nombreDesintegrateurs = 0;
         nombreJetonsRestants = 0;
     }
@@ -56,9 +55,4 @@ public class Joueur {
             return false;
         }
     }
-
-    Jeton enleverJeton() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

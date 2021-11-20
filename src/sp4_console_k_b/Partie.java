@@ -111,20 +111,20 @@ public class Partie {
         int ChoixCol = 0; //initilisation variable choix de colonne entrée par joueur
         Scanner sc = new Scanner(System.in); //joueur entre la colonne voulue
         System.out.println("Entrez une colonne où vous voulez placer votre jeton. ");
-        ChoixCol = sc.nextInt() -1 ; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
-        while (0 < ChoixCol || ChoixCol > 7) {
+        ChoixCol = sc.nextInt() -1; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
+        while (0 < ChoixCol && ChoixCol > 7) {
             System.out.println("Attention : Choisissez une colonne entre 1 et 7. ");
             ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
         }
         if (grilleJeu.colonneRemplie(ChoixCol)==true) {
             //La colonne est déjà remplie
-            ChoixCol = sc.nextInt() - 1; //on demande au joueur d'en choisir 
+            ChoixCol = sc.nextInt() -1; //on demande au joueur d'en choisir 
             System.out.println("Erreur : Colonne déjà remplie - Choisissez une autre colonne");
         }
-        else { //REVOIR ICI :
-            Jeton jetonCourant = joueurCourant.enleverJeton(); //on retire le jeton courant au joueur
+        else {
+            Jeton jetonCourant = new Jeton(joueurCourant.Couleur);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
-            System.out.println("Le jeton a bien été placé dans la colonne : "+ChoixCol);
+            System.out.println("Le jeton a bien été placé dans la colonne");
         }
     }
     
@@ -133,7 +133,7 @@ public class Partie {
         initialiserPartie(); //création du plateau
         
         //Boucle d'une partie (à chaque tour un joueur joue, puis l’autre, et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie)
-        /*for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
+        for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
             //dans la version 1 --> 1 seule option : jouer un jeton
             jouerJeton();
 
@@ -147,10 +147,11 @@ public class Partie {
             }
             //on continue la partie
             else {
+                grilleJeu.afficherGrilleSurConsole(); //on réactualise l'affichage de la grille
                 JoueurSuivant(); //on passe au joueur suivant
             }
             i++;
-        }*/
+        }
     }
 }
 

@@ -127,7 +127,6 @@ public String lireCouleurDuJeton(){
         return "vide";
     }
     else{
-        System.out.println("lireCouleurDuJeton OK2. ");
         return jetonCourant.Couleur;
     }
 }
