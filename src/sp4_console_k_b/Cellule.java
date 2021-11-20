@@ -123,8 +123,8 @@ public boolean presenceDesintegrateur(){
 public String lireCouleurDuJeton(){
     //si la cellule ne contient pas de jeton, renvoie qu'elle est vide, sinon renvoie la couleur du jeton l'occupant
     if (jetonCourant == null){
-        System.out.println("lireCouleurDuJeton OK1. ");
-        return "Cellule vide";
+        //System.out.println("vide");
+        return "vide";
     }
     else{
         System.out.println("lireCouleurDuJeton OK2. ");

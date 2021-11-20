@@ -54,29 +54,29 @@ public class Grille {
     
     public void  afficherGrilleSurConsole() {
     // affiche la grille dans la console
-        for (int line=5; line>=0; line--){ // boucle décrémentée car l'affichage conventionnel et celui pris par les tableaux est inversé
-            for (int column=0; column<7; column++){
-                if (CellulesJeu[line][column].trouNoir == true){
-                    System.out.print("T"); // T sur la cellule pour signifier la présence d'un trou Noir
-                }
-                
-                else if ((CellulesJeu[line][column]).lireCouleurDuJeton(line column))==null){
-                //A FINIR DE COMPLETER
-                }
-                else if ("Rouge".equals(CellulesJeu[line][column])){  //.lireCouleurDuJeton()
-                        System.out.print("R");
-                     }
-                else{
-                        System.out.print("J");
-                    }
-
-            }
-            System.out.println(" " + (line+1)); // affichage des numéros de lignes (l+1) car tableau commence à 0
-        }// revoir l'afichage des numéros de lignes et colonnes
+    System.out.println("| 1  | 2  | 3 |  4 |  5 |  6 |  7 |");
+    for (int line=5; line>=0; line--){ // boucle décrémentée car l'affichage conventionnel et celui pris par les tableaux est inversé
         for (int column=0; column<7; column++){
-            System.out.print((column+1)); // affichage des colonnes (c+1) car tableau commence à 0
+           
+            if (CellulesJeu[line][column].jetonCourant == null){
+                System.out.print("| V |");
+            }
+            else if ((CellulesJeu[line][column].jetonCourant.Couleur)!= "Rouge"){
+                    System.out.print(" J ");
+                 }
+            else{
+                    System.out.print(" R ");
+                }
+                  
         }
-        System.out.println(); // affichage global du tableau
+        System.out.println(" | " + (line+1) + " | "); // affichage des numéros de lignes (l+1) car tableau commence à 0
+    }
+    
+    System.out.println(); // affichage global du tableau
+
+    
+    
+         
 }
 
     public boolean celluleOccupee(int line , int column){
@@ -84,7 +84,7 @@ public class Grille {
             return false;
         }
         else{
-            System.out.println("il y a un jeton a la ligne " + line + "de colonne "+ column );
+            System.out.println("il y a un jeton a la ligne  " + line + "  de colonne "+ column );
             return true;
         }
     }
