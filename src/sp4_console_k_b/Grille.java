@@ -46,12 +46,12 @@ public class Grille {
         for (int line=0;line<6;line++){
             for (int column=0;column<7;column ++){
                 if(CellulesJeu[line][column]==null){
-                    System.out.println("la grille n'est pas encore pleine");
+                    //System.out.println("La grille n'est pas encore pleine");
                     return false ;
                 }
             }
         }
-        System.out.println("la grille est pleine");
+        System.out.println("La grille est pleine");
         return true;
         // le tableau sera bien remplie car toutes les cases on été parcourues 
     }
@@ -80,10 +80,10 @@ public class Grille {
                 System.out.print(ConsoleColors.WHITE_BACKGROUND+"| V |");
             }
             else if ((CellulesJeu[line][column].jetonCourant.Couleur)!= "Rouge"){
-                    System.out.print(ConsoleColors.YELLOW+"| J |");
+                    System.out.print("| J |"); //ConsoleColors.YELLOW+
                  }
             else{
-                    System.out.print(ConsoleColors.RED+"| R |");
+                    System.out.print("| R |"); //ConsoleColors.RED+
                 }
         }
         System.out.println(ConsoleColors.CYAN_BACKGROUND+" | " + (line+1) + " | "+ConsoleColors.CYAN_BACKGROUND); // affichage des numéros de lignes (l+1) car tableau commence à 0
@@ -94,11 +94,11 @@ public class Grille {
     //renvoie vrai si la cellule de coordonnées données est occupée par un jeton.
     public boolean celluleOccupee(int line , int column){
         if (CellulesJeu[line][column].jetonCourant==null){
-            System.out.println("cellule vide");
+            //System.out.println("cellule vide");
             return false;
         }
         else{
-            System.out.println("il y a un jeton a la ligne  " + line + "  de colonne "+ column );
+            //System.out.println("il y a un jeton a la ligne  " + line + "  de colonne "+ column );
             return true;
         }
     }
@@ -106,7 +106,7 @@ public class Grille {
     //renvoie la couleur du jeton de la cellule ciblée.
     public String lireCouleurDuJeton(int line , int column) {
         String couleur=CellulesJeu[line][column].lireCouleurDuJeton();
-        System.out.println("lecture couleur du jeton");
+        //System.out.println("lecture couleur du jeton");
         return couleur;
     }
     
@@ -214,6 +214,7 @@ public class Grille {
             }
     }
 }
+    //PROBLEME ICI :
     //renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
     public boolean colonneRemplie(int column){
         for (int line=0; line <6; line++){
@@ -221,12 +222,8 @@ public class Grille {
                 System.out.println("colonne pas encore remplie");
                 return false ;
             }
-            else {
-                System.out.println("colonne remplie");
-                return true;
-            }
-          }
-        return false;
+        }
+        return true; //colonne remplie
     }
     
     //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé,
