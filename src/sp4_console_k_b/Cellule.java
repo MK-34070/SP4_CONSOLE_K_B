@@ -108,11 +108,11 @@ public boolean presenceTrouNoir(){
 public boolean presenceDesintegrateur(){
     // indique si un desintegrateur est présent ou pas(renvoie true si oui, false sinon)
     if (desintegrateur == true){
-        System.out.println("Désintégrateur présent");
+       // System.out.println("Désintégrateur présent");
         return true;
     }
     else {
-        System.out.println("Désintégrateur absent");
+        //System.out.println("Désintégrateur absent");
         return false;
     }
 }

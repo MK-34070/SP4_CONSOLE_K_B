@@ -107,10 +107,26 @@ public class Partie {
             int ligne=obj.nextInt(5);
             int col=obj.nextInt(6);
             grilleJeu.placerTrouNoir(ligne,col);
+            if (a==0 || a==1){
+                grilleJeu.placerDesintegrateur(ligne,col);
+            }
         }
-               
         
-        //placement des téléporteurs (v.3)
+        //placement des désintégrateurs (v.3)
+        Random obj2 = new Random();
+        for (int a=0; a<3 ; a ++){
+            
+            int ligne=obj2.nextInt(5);
+            int col=obj2.nextInt(6);
+            while(grilleJeu.placerDesintegrateur(ligne,col)==false){
+               ligne=obj2.nextInt(5);
+               col=obj2.nextInt(6);
+            }
+            grilleJeu.placerDesintegrateur(ligne,col);
+        
+        }     
+        
+        
         
         grilleJeu.afficherGrilleSurConsole(); //affichage grille sur console
         System.out.println("La partie va commencer !\nVous pouvez placer un jeton. ");
