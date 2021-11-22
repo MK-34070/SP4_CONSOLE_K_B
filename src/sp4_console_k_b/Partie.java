@@ -138,12 +138,27 @@ public class Partie {
         }
     }
     
+    
+    public void Menu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Faites un choix :\n1) Placer un jeton \n2) Récuperer un jeton");
+        int choixmenu = sc.nextInt();
+        if (choixmenu == 1) {
+            jouerJeton();
+        }
+        if (choixmenu == 2) {
+            System.out.println("Entrez les coordonnées du jeton que vous voulez récupérer.\nLigne : ");
+            int l = sc.nextInt()-1;
+            System.out.println("Colonne : ");
+            int c = sc.nextInt()-1;
+            grilleJeu.recupererJeton(l,c); //Version 3.0
+        }
+    }
+    
     // Méthode : Lancement de la partie
     public void debuterPartie() {
         initialiserPartie(); //création du plateau
-        
-        jouerJeton(); //dans la version 1 --> 1 seule option : jouer un jeton
-        
+        Menu();
         //Boucle d'une partie (à chaque tour un joueur joue, puis l’autre, et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie)
         for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
             
@@ -160,7 +175,7 @@ public class Partie {
                 grilleJeu.afficherGrilleSurConsole(); //on réactualise l'affichage de la grille
                 System.out.println("Au tour de " + joueurCourant.Nom);
                 JoueurSuivant(); //on passe au joueur suivant
-                jouerJeton();
+                Menu();
             }
         }
     }

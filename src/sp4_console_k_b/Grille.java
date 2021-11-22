@@ -258,7 +258,7 @@ public class Grille {
     public Jeton recupererJeton(int line, int column) {
         //recupere le jeton de la coordonnée saisie
         Jeton JetonRecup = CellulesJeu[line][column].jetonCourant;
-        CellulesJeu[line][column].jetonCourant = null;
+        CellulesJeu[line][column].jetonCourant = null; //on appel la méthode qui vide la cellule où le jeton a été récupéré
         System.out.println("Jeton récupéré");
         return JetonRecup;
     }
