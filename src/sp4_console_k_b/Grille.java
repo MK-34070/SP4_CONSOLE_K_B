@@ -85,8 +85,11 @@ public class Grille {
     for (int line=5; line>=0; line--){ // boucle décrémentée car l'affichage conventionnel et celui pris par les tableaux est inversé
         for (int column=0; column<7; column++){
            
-            if (CellulesJeu[line][column].jetonCourant == null){
-                System.out.print(ConsoleColors.WHITE_BACKGROUND+"| V |");
+            if (CellulesJeu[line][column].presenceTrouNoir() == true){
+                System.out.print(ConsoleColors.WHITE_BACKGROUND+"| T |");    
+            }
+            else if(CellulesJeu[line][column].jetonCourant == null){
+               System.out.print(ConsoleColors.WHITE_BACKGROUND+"| V |");
             }
             else if ((CellulesJeu[line][column].jetonCourant.Couleur)!= "Rouge"){
                     System.out.print("| J |"); //ConsoleColors.YELLOW+
@@ -133,7 +136,7 @@ public class Grille {
                 for (int column=0; column<c ; column++){
                     if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
                             if (jetonwin>=4){
-                                System.out.println("Le joueur"  + player  + "a gagné");
+                                
                                 return true;
                             }else{
                                 jetonwin+=1;
@@ -143,7 +146,7 @@ public class Grille {
                     }
                     else{
                         if (jetonwin>=4){
-                            System.out.println("Le joueur"  + player  + "a gagné");
+                            
                             return true;
                         }else{
                             jetonwin=0;
@@ -155,7 +158,7 @@ public class Grille {
                 for (  line=0; line<l ; line++){
                     if (CellulesJeu[line][column].lireCouleurDuJeton()==Colorplayer){
                         if (jetonwin>=4){
-                            System.out.println("Le joueur"  + player  + "a gagné");
+                            
                             return true;
                         }else{
                             jetonwin+=1;
@@ -165,7 +168,7 @@ public class Grille {
                     }
                     else{
                         if (jetonwin>=4){
-                            System.out.println("Le joueur"  + player  + "a gagné");
+                            
                             return true;
                         }else{
                             jetonwin=0;
