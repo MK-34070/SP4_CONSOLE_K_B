@@ -33,11 +33,9 @@ public class Cellule {
         jetonCourant = unjeton;
         if (jetonCourant == null) {
             jetonCourant = unjeton;
-            System.out.println("affecterJeton OK1. ");
             return true; //jeton bien affecté à la cellule du jetonCourant
             }
         else {
-            System.out.println("affecterJeton OK2. ");
             return false; //jetonCourant déjà présent sur la cellule
             }
         }
@@ -46,7 +44,7 @@ public class Cellule {
     public Jeton recupererJeton(){
         Jeton jetonRetour = jetonCourant; // on détermine quel jeton on veut récupérer
         jetonCourant = null; // on réintialise la vide, maintenant vide puisque jeton récupéré
-        System.out.println("recupererJeton OK. ");
+        //System.out.println("recupererJeton OK. ");
         return jetonRetour ; // on renvoie le jeton récupéré
 }
 

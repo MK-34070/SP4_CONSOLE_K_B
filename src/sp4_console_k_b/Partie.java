@@ -112,22 +112,19 @@ public class Partie {
         Scanner sc = new Scanner(System.in); //joueur entre la colonne voulue
         System.out.println("Entrez une colonne où vous voulez placer votre jeton. ");
         ChoixCol = sc.nextInt() -1; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
-        if (ChoixCol < 0 && ChoixCol > 7) {
-            System.out.println("Attention : Choisissez une colonne entre 1 et 7. ");
-            ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
-            if (ChoixCol != 1 || ChoixCol != 2 || ChoixCol != 3 || ChoixCol != 4 || ChoixCol != 5 || ChoixCol != 6 || ChoixCol != 7) {
-                System.out.println("Attention : Choisissez une colonne entre 1 et 7. ");
-                ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
-            }
-        }
-        else if (grilleJeu.colonneRemplie(ChoixCol) == true) {
+        if (grilleJeu.colonneRemplie(ChoixCol) == true) {
             //La colonne est déjà remplie
-            ChoixCol = sc.nextInt() -1; //on demande au joueur d'en choisir 
+            ChoixCol = sc.nextInt() -1; //on demande au joueur d'en choisir
+            System.out.println("Colonne déjà remplie, choisissez une autre colonne");
         }
-        else { //if (grilleJeu.colonneRemplie(ChoixCol) == false) 
+        else if (grilleJeu.colonneRemplie(ChoixCol) == false) {
             Jeton jetonCourant = new Jeton(joueurCourant.Couleur);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
             System.out.println("Le jeton a bien été placé dans la colonne");
+        }
+        if (0 > ChoixCol && ChoixCol > 7) {
+            System.out.println("Attention : entrez une colonne valide --- entre 1 et 7");
+            ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
         }
     }
     

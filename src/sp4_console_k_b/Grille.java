@@ -4,12 +4,15 @@
  */
 package sp4_console_k_b;
 
+import java.util.Arrays;
+
 /**
  *
  * @author mario
  */
 public class Grille {
     Cellule CellulesJeu[][] = new Cellule[6][7];
+    //int[] indiceCol = new int[6];
     //création du tableau à 2 dimensionsavec des objets cellules.
     public Grille(){ //on construit une référence objet de classe cellule (42 fois)
         for (int line=0; line<6; line++){
@@ -17,6 +20,10 @@ public class Grille {
                 CellulesJeu[line][column] = new Cellule();
             }
         }
+        /*//construction tableau indice des col pour résoudre pb dans la méthode ColonneRemplie
+        for (int m = 0; m < 7; m++) {
+            indiceCol [m] = m+1;
+        }*/
     }
     
     //mettre de la couleur sur grille
@@ -31,11 +38,13 @@ public class Grille {
     //ajoute le jeton dans la colonne ciblée, sur
     //la cellule vide la plus basse. Renvoie faux si la colonne était pleine.
     public boolean ajouterJetonDansColonne(Jeton unjeton, int column ){
-        for (int line=0; line<6;line ++){
-            if (CellulesJeu[line][column].jetonCourant==null){
-                CellulesJeu[line][column].affecterJeton(unjeton);//appel de la méthode pour affecter un jeton a la cellule
-                return true;
-            } 
+        if (colonneRemplie(column) == false) {
+            for (int line=0; line<6;line ++){
+                if (CellulesJeu[line][column].jetonCourant==null){
+                    CellulesJeu[line][column].affecterJeton(unjeton); //on remplie la cellule vide la plus basse
+                    return true;
+                } 
+            }
         }
      return false; //la colonne est remplie
     }
@@ -217,15 +226,11 @@ public class Grille {
     //PROBLEME ICI : ca return pas le bon true ou false dans tous les cas
     //renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
     public boolean colonneRemplie(int column){
-        int a = 0;
-        for (int line=0; line <6; line++){
-            if (CellulesJeu[line][column].jetonCourant!=null){
-                a ++; //on fait un compteur de cellules remplises
-            }
-        }
-        if (a == 7) {
-            System.out.println("Colonne choisie déjà remplie");
-            return true; //colonne remplie
+        if (CellulesJeu[5][column].jetonCourant!=null){
+            System.out.println("colonne remplie, choisissez une autre colonne");
+            //indiceCol[column] = 0; //on dit que la colonne est remplise
+            //System.out.println(Arrays.toString(indiceCol));
+            return true;
         }
         else {
             return false;
@@ -234,7 +239,7 @@ public class Grille {
     
     //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé,
     //ou faux sinon (exemple : désintégrateur déjà présent)
-    public boolean  placerDesintegrateur(int line, int column){
+    public boolean placerDesintegrateur(int line, int column){
     // si il y a déjà un desintegrateur de présent, renvoie false, true sinon
  
     if (CellulesJeu[line][column].desintegrateur == false){
