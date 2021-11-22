@@ -35,7 +35,7 @@ public class Partie {
         //Tirage aléatoire d'une couleur de jeton
         Random rand = new Random();
         int i = rand.nextInt(2);
-        ListeJoueurs[0].Couleur = uneCouleur[i]; //on attribu cette 1ere couleur aléatoire au joueur1
+        ListeJoueurs[0].Couleur = uneCouleur[i]; //on attribue cette 1ere couleur aléatoire au joueur1
         int a;
         if (i == 0) {
             a = 1;
@@ -99,7 +99,17 @@ public class Partie {
             joueurCourant = joueur2; //affectation du joueur courant
         }
         
-        //placement des trous noirs (v.2)
+        //placement des trous noirs (v.2)(aléatoire)
+    
+        Random obj = new Random();
+        for (int a=0; a<5 ; a ++){
+            
+            int ligne=obj.nextInt(5);
+            int col=obj.nextInt(6);
+            grilleJeu.placerTrouNoir(ligne,col);
+        }
+               
+        
         //placement des téléporteurs (v.3)
         
         grilleJeu.afficherGrilleSurConsole(); //affichage grille sur console

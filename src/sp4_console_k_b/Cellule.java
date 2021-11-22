@@ -67,14 +67,14 @@ public class Cellule {
     // renvoie true et ajoute un trou noir si il n'a a pas déjà de trou noir présent, false sinon
  
        if (trouNoir = false){
-       trouNoir = true ;
-       System.out.println("Ajout de Trou Noir effectué");
+            trouNoir = true ;
+            System.out.println("Ajout de Trou Noir effectué");
         return true;
-    }
-    else {
-      System.out.println("Trou Noir déja présent"); 
-      return false;
-    }
+        }
+        else {
+          System.out.println("Trou Noir déja présent"); 
+          return false;
+        }
     }
 
 public boolean placerDesintegrateur(){
@@ -95,11 +95,11 @@ public boolean presenceTrouNoir(){
     // indique si un trou noir est présent ou pas (renvoie true si oui, false sinon)
  
     if (trouNoir == true){
-        System.out.println("Trou Noir présent");
+        //System.out.println("Trou Noir présent");
         return true;
     }
     else {
-        System.out.println("Trou Noir absent");
+        //System.out.println("Trou Noir absent");
         return false;
     }
 }
