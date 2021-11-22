@@ -132,25 +132,27 @@ public class Partie {
     public void debuterPartie() {
         initialiserPartie(); //création du plateau
         
+        jouerJeton(); //dans la version 1 --> 1 seule option : jouer un jeton
+        
         //Boucle d'une partie (à chaque tour un joueur joue, puis l’autre, et on recommence ainsi tant qu’il n’y a pas de joueur gagnant ou que la grille n’est pas remplie)
         for (int i=0; i<42; i++) { //dans tous les cas, la partie se termine lorsque les 42 cellules sont remplies (cas le plus long)
-            //dans la version 1 --> 1 seule option : jouer un jeton
-            jouerJeton();
+            
+            grilleJeu.etreGagnantePourJoueur(joueurCourant); //au tour du joueur gagnant de jouer
 
-            //au tour du joueur gagnant de jouer
-            grilleJeu.etreGagnantePourJoueur(joueurCourant);
-            System.out.println("Au tour de " + joueurCourant.Nom);
-
-            //détection du joueur gagnant à chaque partie
+            //détection d'un joueur gagnant
             if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true) {
+                grilleJeu.afficherGrilleSurConsole();
                 System.out.println(joueurCourant.Nom + " a gagné la partie! ");
+                
+                break;
             }
-            //on continue la partie
+            //sinon on continue la partie
             else {
                 grilleJeu.afficherGrilleSurConsole(); //on réactualise l'affichage de la grille
+                System.out.println("Au tour de " + joueurCourant.Nom);
                 JoueurSuivant(); //on passe au joueur suivant
+                jouerJeton();
             }
-            i++;
         }
     }
 }
