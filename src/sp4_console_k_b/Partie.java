@@ -132,7 +132,7 @@ public class Partie {
             grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
             System.out.println("Le jeton a bien été placé dans la colonne");
         }
-        if (0 > ChoixCol && ChoixCol > 7) {
+        if (0 > ChoixCol && ChoixCol > 7) { //colonne entrée n'est pas valide
             System.out.println("Attention : entrez une colonne valide --- entre 1 et 7");
             ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
         }

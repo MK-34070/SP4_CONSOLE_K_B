@@ -30,9 +30,13 @@ public class Cellule {
     //ajoute le jeton en paramètre à la cellule, et retourne vrai si
     //l’ajout s’est bien passé, sinon faux
     public boolean affecterJeton(Jeton unjeton) {
-        jetonCourant = unjeton;
+       
         if (jetonCourant == null) {
             jetonCourant = unjeton;
+            // si un trou noir est présent sur la cellule où est joué le jeton, on l'active
+            if (presenceTrouNoir() == true){
+                activerTrouNoir();
+            }
             return true; //jeton bien affecté à la cellule du jetonCourant
             }
         else {
@@ -65,7 +69,6 @@ public class Cellule {
 
     public boolean placerTrouNoir(){
     // renvoie true et ajoute un trou noir si il n'a a pas déjà de trou noir présent, false sinon
- 
        if (trouNoir = false){
             trouNoir = true ;
             System.out.println("Ajout de Trou Noir effectué");
@@ -79,7 +82,6 @@ public class Cellule {
 
 public boolean placerDesintegrateur(){
     //Renvoie true et place in desintegrateur si il n'y en a pas déjà un, false et ne fait rien dans le cas contraire
- 
     if (desintegrateur = false){ // si il n'y a pas de desintegrateur
         desintegrateur = true ; //on change sa valeur
         System.out.println("Ajout de Désintégrateur effectué");
@@ -93,7 +95,6 @@ public boolean placerDesintegrateur(){
 
 public boolean presenceTrouNoir(){
     // indique si un trou noir est présent ou pas (renvoie true si oui, false sinon)
- 
     if (trouNoir == true){
         //System.out.println("Trou Noir présent");
         return true;
@@ -104,10 +105,8 @@ public boolean presenceTrouNoir(){
     }
 }
 
-
 public boolean presenceDesintegrateur(){
     // indique si un desintegrateur est présent ou pas(renvoie true si oui, false sinon)
- 
     if (desintegrateur == true){
         System.out.println("Désintégrateur présent");
         return true;
@@ -132,7 +131,6 @@ public String lireCouleurDuJeton(){
 
 public boolean recupererDesintegrateur(){
     // si il y a un desintegrateur, le supprime et renvoie true, sinon renvoie false et ne fait rien
- 
     if(desintegrateur =! false){
         desintegrateur = false;
         System.out.println("Suppression du Désintegrateur effectuée");
@@ -144,14 +142,13 @@ public boolean recupererDesintegrateur(){
     } 
 }
 
+// si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
 public boolean activerTrouNoir(){
-    // si il y a un trou noir alors vide la cellule et fait disparaitre le trou noir, sinon ne fait rien
- 
-    if(trouNoir = true){
+    if(trouNoir == true){
         jetonCourant=null; // vide la cellule
         trouNoir = false; // disparition du Trou Noir
-        System.out.println("Activation Trou Noir effectuée");
-        return true;  
+        System.out.println("Activation Trou Noir effectuée, cellule vidée");
+        return true;
     }
     else{
         System.out.println("Pas de Trou Noir présent");
