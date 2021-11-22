@@ -43,18 +43,14 @@ public class Cellule {
             return false; //jetonCourant déjà présent sur la cellule
             }
         }
-
     
-//Version 3.0 : L’interface console de l’utilisateur est légèrement modifiée : lors de son tour de jeu,
-//le joueur doit saisir s’il souhaite jouer un jeton ou récupérer un jeton. Selon le choix opéré,
-//il saisira simplement le numéro de ligne dans laquelle ajouter un jeton, ou les coordonnées du jeton à récupérer.
     //renvoie une référence vers le jeton de la cellule
-    public Jeton recupererJeton(){
+    /*public Jeton recupererJeton(){
         Jeton jetonRetour = jetonCourant; // variable pour jeton que l'on veut récupérer
         jetonCourant = null; // on réintialise la cellule, maintenant vide puisque jeton récupéré
         System.out.println("Jeton récupéré");
         return jetonRetour ; // on renvoie le jeton récupéré
-}
+    }*/
 
     //supprime le jeton et renvoie vrai si la suppression s’est bien
     //passée, ou faux autrement (ex : pas de jeton présent)

@@ -182,8 +182,6 @@ public class Grille {
         return false;
     }
         
-   
-
     //lorsqu’un jeton est capturé ou détruit, tasse la grille en
     //décalant de une ligne les jetons situés au dessus de la cellule libérée.
     public void tasserGrille(int line, int column) {
@@ -191,7 +189,7 @@ public class Grille {
         for (int i = line; i < 6; i++) {
             if (i == 5) {
                 CellulesJeu[i][column].jetonCourant = null; // si on est sur la plus haute ligne du tableau, cela ne décale rien. On initialise juste la cellule
-                System.out.println("Grille non tassée (plus haute ligne du tableau)");
+                System.out.println("Impossible de tassée la grille (plus haute ligne du tableau)");
             } else {
                 CellulesJeu[i][column].jetonCourant = CellulesJeu[i + 1][column].jetonCourant; // sinon on affecte à chaque ligne de la colonne fixée la valeur du jeton au-dessus de lui
                 System.out.println("Grille tassée");
@@ -199,7 +197,6 @@ public class Grille {
         }
     }
 
-    //PROBLEME ICI : ca return pas le bon true ou false dans tous les cas
     //renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
     public boolean colonneRemplie(int column) {
         if (CellulesJeu[5][column].jetonCourant != null) {
@@ -220,8 +217,7 @@ public class Grille {
         if (CellulesJeu[line][column].desintegrateur == false) {
             if (CellulesJeu[line][column].trouNoir == false){
                 CellulesJeu[line][column].desintegrateur = true;
-            
-                System.out.println("Désintégrateur placé");
+                //System.out.println("Désintégrateur placé");
                 return true;
             }
             else{
@@ -240,10 +236,10 @@ public class Grille {
     public boolean placerTrouNoir(int line, int column) {
         if (CellulesJeu[line][column].trouNoir == false) {
             CellulesJeu[line][column].trouNoir = true;
-            System.out.println("Trou Noir bien placé");
+            //System.out.println("Trou Noir bien placé");
             return true;
         }
-        System.out.println("trou Noir déjà présent");
+        //System.out.println("trou Noir déjà présent");
         return false;
     }
 
@@ -261,12 +257,15 @@ public class Grille {
         }
     }
 
-    //enlève le jeton de la cellule visée et renvoie une référence vers ce jeton.
+    //Version 3.0 : lors de son tour de jeu, le joueur doit saisir s’il souhaite jouer un jeton
+    //ou récupérer un jeton. Selon le choix opéré, il saisira simplement le numéro de ligne
+    //dans laquelle ajouter un jeton, ou les coordonnées du jeton à récupérer
     public Jeton recupererJeton(int line, int column) {
         //recupere le jeton de la coordonnée saisie
         Jeton JetonRecup = CellulesJeu[line][column].jetonCourant;
         CellulesJeu[line][column].jetonCourant = null; //on appel la méthode qui vide la cellule où le jeton a été récupéré
         System.out.println("Jeton récupéré");
+        tasserGrille(line,column); //une fois le jeton récupéré, on tasse la grille en faisant appel à la fonction prévue
         return JetonRecup;
     }
 }

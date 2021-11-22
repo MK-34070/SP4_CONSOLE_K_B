@@ -188,6 +188,7 @@ public class Partie {
             }
             //sinon on continue la partie
             else {
+                System.out.println("Dernière action effectuée");
                 grilleJeu.afficherGrilleSurConsole(); //on réactualise l'affichage de la grille
                 System.out.println("Au tour de " + joueurCourant.Nom);
                 JoueurSuivant(); //on passe au joueur suivant
