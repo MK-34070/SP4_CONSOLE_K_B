@@ -143,7 +143,6 @@ public class Partie {
             if (grilleJeu.etreGagnantePourJoueur(joueurCourant)==true) {
                 grilleJeu.afficherGrilleSurConsole();
                 System.out.println(joueurCourant.Nom + " a gagné la partie! ");
-                
                 break;
             }
             //sinon on continue la partie

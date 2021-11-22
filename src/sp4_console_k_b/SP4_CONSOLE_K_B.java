@@ -65,7 +65,5 @@ public class SP4_CONSOLE_K_B {
         System.out.println("Vous entrez dans le jeu Super Puissance 4 !");
         Partie unepartie = new Partie();
         unepartie.debuterPartie();
-        
     }
-    
 }
