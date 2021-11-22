@@ -26,13 +26,13 @@ public class Joueur {
     //affecte la couleur en paramètre au joueur
     public void affecterCouleur(String Color) {
         Couleur = Color;
-        System.out.println("La couleur " + Couleur+" a été affecté à "+Nom);
+        //System.out.println("La couleur " + Couleur+" a été affecté à "+Nom);
     }
 
     //ajoute le jeton passé en paramètre à la liste des jetons
     public boolean ajouterJeton(Jeton unjeton ) {
         ListeJetons[nombreJetonsRestants++] = unjeton;
-        System.out.println("un jeton a été ajouté au joueur "+Nom);
+        //System.out.println("un jeton a été ajouté au joueur "+Nom);
         return false;
     // pourquoi avoir un boolean en sortie? que veut on savoir?
     //si la liste de jeton est pleine --> return true?
