@@ -89,6 +89,9 @@ public class Grille {
             if (CellulesJeu[line][column].presenceTrouNoir() == true){
                 System.out.print(ConsoleColors.WHITE_BACKGROUND+"| T |");    
             }
+            else if (CellulesJeu[line][column].presenceDesintegrateur() == true){
+                System.out.print(ConsoleColors.WHITE_BACKGROUND+"| D |");    
+            }
             else if(CellulesJeu[line][column].jetonCourant == null){
                System.out.print(ConsoleColors.WHITE_BACKGROUND+"| V |");
             }
@@ -215,11 +218,15 @@ public class Grille {
         // si il y a déjà un desintegrateur de présent, renvoie false, true sinon
 
         if (CellulesJeu[line][column].desintegrateur == false) {
-            CellulesJeu[line][column].desintegrateur = true;
-            // Placer Désintégrateur sur la grille !!!
-            // HERE //
-            System.out.println("Désintégrateur placé");
-            return true;
+            if (CellulesJeu[line][column].trouNoir == false){
+                CellulesJeu[line][column].desintegrateur = true;
+            
+                System.out.println("Désintégrateur placé");
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         System.out.println("Désintégrateur déjà présent");
         return false;
