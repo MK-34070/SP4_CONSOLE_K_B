@@ -75,8 +75,8 @@ public class Partie {
         
         //attribution des couleurs aux joueurs
         attribuerCouleursAuxJoueurs();
-        System.out.println(joueur1+" possède les jetons de couleur "+joueur1.Couleur);
-        System.out.println(joueur2+" possède les jetons de couleur "+joueur2.Couleur);
+        //System.out.println(joueur1+" possède les jetons de couleur "+joueur1.Couleur);
+        //System.out.println(joueur2+" possède les jetons de couleur "+joueur2.Couleur);
        
         //creation des jetons & attribution des jetons correpondants aux joueurs
         for (int i = 0; i < 20; i++) {
@@ -112,16 +112,19 @@ public class Partie {
         Scanner sc = new Scanner(System.in); //joueur entre la colonne voulue
         System.out.println("Entrez une colonne où vous voulez placer votre jeton. ");
         ChoixCol = sc.nextInt() -1; //on retire 1 au choix de la colonne car l'indice column du tableau est de 0 à 6 (or le joueur pense que les colonnes sont de 1 à 7)
-        while (0 < ChoixCol && ChoixCol > 7) {
+        if (ChoixCol < 0 && ChoixCol > 7) {
             System.out.println("Attention : Choisissez une colonne entre 1 et 7. ");
             ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
+            if (ChoixCol != 1 || ChoixCol != 2 || ChoixCol != 3 || ChoixCol != 4 || ChoixCol != 5 || ChoixCol != 6 || ChoixCol != 7) {
+                System.out.println("Attention : Choisissez une colonne entre 1 et 7. ");
+                ChoixCol = sc.nextInt() -1; //le joueur entre à nouveau une colonne
+            }
         }
-        if (grilleJeu.colonneRemplie(ChoixCol)==true) {
+        else if (grilleJeu.colonneRemplie(ChoixCol) == true) {
             //La colonne est déjà remplie
             ChoixCol = sc.nextInt() -1; //on demande au joueur d'en choisir 
-            System.out.println("Erreur : Colonne déjà remplie - Choisissez une autre colonne");
         }
-        else {
+        else { //if (grilleJeu.colonneRemplie(ChoixCol) == false) 
             Jeton jetonCourant = new Jeton(joueurCourant.Couleur);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
             System.out.println("Le jeton a bien été placé dans la colonne");

@@ -214,16 +214,22 @@ public class Grille {
             }
     }
 }
-    //PROBLEME ICI :
+    //PROBLEME ICI : ca return pas le bon true ou false dans tous les cas
     //renvoie vrai si la colonne est remplie (on ne peut y jouer un Jeton)
     public boolean colonneRemplie(int column){
+        int a = 0;
         for (int line=0; line <6; line++){
-            if (CellulesJeu[line][column].jetonCourant==null){ // si cellule vide alors colonne non remplie
-                System.out.println("colonne pas encore remplie");
-                return false ;
+            if (CellulesJeu[line][column].jetonCourant!=null){
+                a ++; //on fait un compteur de cellules remplises
             }
         }
-        return true; //colonne remplie
+        if (a == 7) {
+            System.out.println("Colonne choisie déjà remplie");
+            return true; //colonne remplie
+        }
+        else {
+            return false;
+        }
     }
     
     //ajoute un désintégrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé,
