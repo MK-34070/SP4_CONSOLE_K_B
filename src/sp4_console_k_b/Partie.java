@@ -169,12 +169,20 @@ public class Partie {
     
     public void Menu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Faites un choix :\n1) Placer un jeton \n2) Récuperer un jeton");
+        System.out.println("Faites un choix :\n1) Placer un jeton \n2) Récuperer un jeton  \n3) Utiliser un désintégrateur");
         int choixmenu = sc.nextInt();
         if (choixmenu == 1) {
             jouerJeton();
         }
         if (choixmenu == 2) {
+            System.out.println("Entrez les coordonnées du jeton que vous voulez récupérer.\nLigne : ");
+            int l = sc.nextInt()-1;
+            System.out.println("Colonne : ");
+            int c = sc.nextInt()-1;
+            grilleJeu.recupererJeton(l,c); //Version 3.0
+        }
+        if (choixmenu == 3) {
+            joueurCourant.utiliserDesintegrateur();
             System.out.println("Entrez les coordonnées du jeton que vous voulez récupérer.\nLigne : ");
             int l = sc.nextInt()-1;
             System.out.println("Colonne : ");

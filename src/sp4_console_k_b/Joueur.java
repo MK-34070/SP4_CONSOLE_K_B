@@ -48,7 +48,7 @@ public class Joueur {
     public boolean utiliserDesintegrateur() {
         //vérifie que le joueur possède au moins un désintégrateur
         if (nombreDesintegrateurs > 0) {
-            nombreDesintegrateurs -= 1; //retire un désintégrateur
+            nombreDesintegrateurs -= 1; //retire un désintégrateur          
             System.out.println("Désintégrateur utilisé. "); //mess confirmation utilisation désintégrateur
             return true;
         } else {
