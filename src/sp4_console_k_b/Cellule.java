@@ -12,7 +12,7 @@ public class Cellule {
     Jeton jetonCourant; //référence vers le jeton occupant la cellule, ou null
     boolean trouNoir; //indique ou non la présence d’un trou noir
     boolean desintegrateur; //indique ou non la présence d’un désintégrateur
-
+    
      
     // Constructeur : initialisant les attributs avec des valeurs par défaut
     public Cellule() {
@@ -36,6 +36,10 @@ public class Cellule {
             // si un trou noir est présent sur la cellule où est joué le jeton, on l'active
             if (presenceTrouNoir() == true){
                 activerTrouNoir();
+            }
+            if(presenceDesintegrateur() == true){
+                recupererDesintegrateur();
+                
             }
             return true; //jeton bien affecté à la cellule du jetonCourant
             }
@@ -133,7 +137,8 @@ public boolean recupererDesintegrateur(){
     // si il y a un desintegrateur, le supprime et renvoie true, sinon renvoie false et ne fait rien
     if(desintegrateur =! false){
         desintegrateur = false;
-        System.out.println("Suppression du Désintegrateur effectuée");
+        System.out.println("Suppression du Désintegrateur effectuée");  
+        
         return true;  
     }
     else{

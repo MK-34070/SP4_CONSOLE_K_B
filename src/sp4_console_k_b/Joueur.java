@@ -40,6 +40,7 @@ public class Joueur {
     //incrémente le nombre de désintégrateurs du joueur
     public void obtenirDesintegrateur() {
         nombreDesintegrateurs += 1;
+        System.out.println("le nombre de desintegrateur:  "+  nombreDesintegrateurs);
     }
 
     //décrémente le nombre de désintégrateurs et confirme l’utilisation de ce dernier,

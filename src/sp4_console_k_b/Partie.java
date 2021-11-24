@@ -24,8 +24,12 @@ public class Partie {
     //création grilleJeu : désigne la grille de jeu - sans doute l’objet le plus important de ce projet.
     //Tout y est fait : ajout de jetons, et vérification de la grille
     Grille grilleJeu = new Grille();
-        
     
+    //je veux céer un nouvel objet permettant d'appeller la méthode recuperer desintegrateur dans la classe Cellule
+    Cellule celluleJeu= new Cellule();
+    
+    
+  
     // Méthode : attribution aléatoire des couleurs aux joueurs
     public void attribuerCouleursAuxJoueurs() {
         //creation tableau contenant les deux couleurs
@@ -145,8 +149,17 @@ public class Partie {
         }
         else if (grilleJeu.colonneRemplie(ChoixCol) == false) {
             Jeton jetonCourant = new Jeton(joueurCourant.Couleur);
-            grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol); //On ajoute le Jeton dans la colonne choisie sur la grille
-            System.out.println("Le jeton a bien été placé dans la colonne");
+           
+            if (grilleJeu.ajouterJetonDansColonne(jetonCourant, ChoixCol)!=-1){
+                joueurCourant.obtenirDesintegrateur();
+                System.out.println(" obtenirDesintegrateur OK ");
+            }else{
+              m
+                      m
+                      System.out.println("Le jeton a bien été placé dans la colonne");
+            }
+            
+            
         }
         if (0 > ChoixCol && ChoixCol > 7) { //colonne entrée n'est pas valide
             System.out.println("Attention : entrez une colonne valide --- entre 1 et 7");

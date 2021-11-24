@@ -28,6 +28,8 @@ public class Grille {
         }*/
     }
 
+    
+
     //mettre de la couleur sur grille
     public class ConsoleColors {
 
@@ -39,17 +41,29 @@ public class Grille {
 
     //ajoute le jeton dans la colonne ciblée, sur
     //la cellule vide la plus basse. Renvoie faux si la colonne était pleine.
-    public boolean ajouterJetonDansColonne(Jeton unjeton, int column) {
+    public int ajouterJetonDansColonne(Jeton unjeton, int column) {
         if (colonneRemplie(column) == false) {
             for (int line = 0; line < 6; line++) {
                 if (CellulesJeu[line][column].jetonCourant == null) {
-                    CellulesJeu[line][column].affecterJeton(unjeton); //on remplie la cellule vide la plus basse
-                    return true;
+                    if (CellulesJeu[line][column].presenceDesintegrateur() == true) {
+                        CellulesJeu[line][column].affecterJeton(unjeton);
+                        System.out.println("la ligne est"+line);
+                        return line;                      
+                    }
+                    else{
+                        CellulesJeu[line][column].affecterJeton(unjeton); //on remplie la cellule vide la plus basse
+                        return -1;
+                    }
+                            
                 }
             }
         }
-        return false; //la colonne est remplie
+       // return false; //la colonne est remplie
+        return -1;
     }
+
+
+    
 
     //renvoie vrai si la grille est pleine
     public boolean etreremplie() {
@@ -221,14 +235,14 @@ public class Grille {
             if (CellulesJeu[line][column].trouNoir == false){
                 CellulesJeu[line][column].desintegrateur = true;
             
-                System.out.println("Désintégrateur placé");
+                //System.out.println("Désintégrateur placé");
                 return true;
             }
             else{
                 return false;
             }
         }
-        System.out.println("Désintégrateur déjà présent");
+        //System.out.println("Désintégrateur déjà présent");
         return false;
     }
 
@@ -240,10 +254,10 @@ public class Grille {
     public boolean placerTrouNoir(int line, int column) {
         if (CellulesJeu[line][column].trouNoir == false) {
             CellulesJeu[line][column].trouNoir = true;
-            System.out.println("Trou Noir bien placé");
+            //System.out.println("Trou Noir bien placé");
             return true;
         }
-        System.out.println("trou Noir déjà présent");
+        //System.out.println("trou Noir déjà présent");
         return false;
     }
 
