@@ -154,9 +154,8 @@ public class Partie {
                 joueurCourant.obtenirDesintegrateur();
                 System.out.println(" obtenirDesintegrateur OK ");
             }else{
-              m
-                      m
-                      System.out.println("Le jeton a bien été placé dans la colonne");
+                
+                System.out.println("Le jeton a bien été placé dans la colonne");
             }
             
             
