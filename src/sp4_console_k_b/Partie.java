@@ -183,11 +183,13 @@ public class Partie {
         }
         if (choixmenu == 3) {
             joueurCourant.utiliserDesintegrateur();
-            System.out.println("Entrez les coordonnées du jeton que vous voulez récupérer.\nLigne : ");
-            int l = sc.nextInt()-1;
-            System.out.println("Colonne : ");
-            int c = sc.nextInt()-1;
-            grilleJeu.recupererJeton(l,c); //Version 3.0
+            if (joueurCourant.utiliserDesintegrateur()==true){
+                System.out.println("Entrez les coordonnées du jeton que vous voulez récupérer.\nLigne : ");
+                int l = sc.nextInt()-1;
+                System.out.println("Colonne : ");
+                int c = sc.nextInt()-1;
+                grilleJeu.recupererJeton(l,c); //Version 3.0
+            }
         }
     }
     

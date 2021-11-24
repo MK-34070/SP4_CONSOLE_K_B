@@ -52,7 +52,7 @@ public class Joueur {
             System.out.println("Désintégrateur utilisé. "); //mess confirmation utilisation désintégrateur
             return true;
         } else {
-            System.out.println("Vous ne possédez plus de désintégrateur. ");
+            System.out.println("Vous ne possédez pas de désintégrateur. ");
             return false;
         }
     }
