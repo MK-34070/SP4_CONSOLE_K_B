@@ -47,16 +47,15 @@ public class Cellule {
             return false; //jetonCourant déjà présent sur la cellule
             }
         }
-
-    //renvoie une référence vers le jeton de la cellule
-    public Jeton recupererJeton(){
-        Jeton jetonRetour = jetonCourant; // on détermine quel jeton on veut récupérer
-        jetonCourant = null; // on réintialise la vide, maintenant vide puisque jeton récupéré
-        //System.out.println("recupererJeton OK. ");
-        return jetonRetour ; // on renvoie le jeton récupéré
-}
-
     
+    //renvoie une référence vers le jeton de la cellule
+    /*public Jeton recupererJeton(){
+        Jeton jetonRetour = jetonCourant; // variable pour jeton que l'on veut récupérer
+        jetonCourant = null; // on réintialise la cellule, maintenant vide puisque jeton récupéré
+        System.out.println("Jeton récupéré");
+        return jetonRetour ; // on renvoie le jeton récupéré
+    }*/
+
     //supprime le jeton et renvoie vrai si la suppression s’est bien
     //passée, ou faux autrement (ex : pas de jeton présent)
     public boolean supprimerJeton() {
